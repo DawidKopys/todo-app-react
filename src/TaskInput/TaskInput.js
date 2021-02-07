@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import './_TaskInput.scss';
 
-const TaskInput = ({ addTask }) => {
+const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
   const [taskInput, setTaskInput] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
 
   const handleAddTask = () => {
     //todo:  add only if not empty, show popup else
@@ -31,6 +30,7 @@ const TaskInput = ({ addTask }) => {
           value={taskInput}
           onChange={(e) => {
             setTaskInput(e.target.value);
+            setShowPopup(false);
           }}
         ></input>
         <p

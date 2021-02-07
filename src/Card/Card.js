@@ -20,6 +20,7 @@ const Card = () => {
     { id: uuid(), text: 'task one', isChecked: false },
     { id: uuid(), text: 'task two', isChecked: false },
   ]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const addTask = (taskText) => {
     setTasks([...tasks, { id: uuid(), text: taskText, isChecked: false }]);
@@ -51,7 +52,11 @@ const Card = () => {
 
   return (
     <div className='center-card'>
-      <TaskInput addTask={addTask} />
+      <TaskInput
+        addTask={addTask}
+        showPopup={showPopup}
+        setShowPopup={setShowPopup}
+      />
       <TaskList
         tasks={tasks}
         deleteTask={deleteTask}
@@ -63,14 +68,20 @@ const Card = () => {
           id='button-delete-checked'
           title='Delete checked tasks'
           text='Delete Checked'
-          onClick={deleteChecked}
+          onClick={() => {
+            deleteChecked();
+            setShowPopup(false);
+          }}
         />
         <Button
           className='button-card'
           id='button-delete-all'
           title='Delete all tasks'
           text='Delete All'
-          onClick={deleteAll}
+          onClick={() => {
+            deleteAll();
+            setShowPopup(false);
+          }}
         />
       </div>
     </div>
