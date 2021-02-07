@@ -3,7 +3,7 @@ import './_TaskItem.scss';
 
 const TaskItem = ({ id, children, isChecked, toggleIsChecked, deleteTask }) => {
   return (
-    <div className={`task-item ${isChecked ? 'checked' : ''}`}>
+    <div className={`task-item${isChecked ? ' checked' : ''}`}>
       <button
         className='task-rectangle'
         title={`${isChecked ? 'Uncheck Task' : 'Check Task'}`}
@@ -15,9 +15,7 @@ const TaskItem = ({ id, children, isChecked, toggleIsChecked, deleteTask }) => {
           isChecked ? 'Uncheck Task' : 'Check Task'
         }`}</span>
       </button>
-      <p className='task-text' contentEditable='false'>
-        {children}
-      </p>
+      <p className='task-text'>{children}</p>
       <button
         className='task-delete'
         title='Delete task'
