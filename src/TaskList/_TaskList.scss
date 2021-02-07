@@ -1,0 +1,24 @@
+@import '../styles/variables';
+@import '../styles/fonts';
+@import '../styles/css-reset';
+
+.task-list-container {
+  min-height: 295px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .task-list {
+    background-color: #f8f8f8;
+    height: 275px;
+    width: 80%;
+    border-radius: 10px;
+    overflow-y: auto;
+
+    &.narrow {
+      .task-text {
+        max-width: 215px;
+      }
+    }
+  }
+}

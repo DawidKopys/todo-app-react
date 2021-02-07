@@ -1,0 +1,40 @@
+@import '../styles/variables';
+@import '../styles/fonts';
+@import '../styles/css-reset';
+
+.button-card {
+  display: inline-block;
+  background-color: $button-color;
+  border-radius: 6px;
+  height: 36px;
+  width: 50px;
+  user-select: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: $button-color-hover;
+    color: black;
+    line-height: 2;
+    border: 2px black solid;
+    outline: none;
+  }
+
+  &#button-delete-all {
+    flex: 1 115px;
+  }
+
+  &#button-delete-checked {
+    flex: 1 160px;
+    margin-right: 10px;
+  }
+}
+
+/* Typography */
+button {
+  font-family: Montserrat;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 2.25;
+}

@@ -1,0 +1,84 @@
+@import '../styles/variables';
+@import '../styles/fonts';
+@import '../styles/css-reset';
+
+.input-area {
+  margin: auto;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input#task-input {
+    width: 240px;
+    height: 2em;
+    padding: 1em;
+    margin-right: 2em;
+    border: 2px solid $grey1;
+    border-radius: 4px;
+
+    &:focus {
+      border-color: black;
+    }
+
+    &::placeholder {
+      color: $grey1;
+    }
+  }
+
+  // Task input pop-up
+  #task-input-container {
+    position: relative;
+
+    // The actual pop-up
+    #task-input-popup {
+      visibility: hidden;
+      position: absolute;
+      cursor: pointer;
+      user-select: none;
+      background-color: black;
+      border-radius: 10px;
+      padding: 10px;
+      bottom: 2.5rem;
+      left: -0.15rem;
+
+      // pop-up arrow
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 1rem;
+        border-width: 8px;
+        border-style: solid;
+        border-color: black transparent transparent transparent;
+      }
+
+      &.show {
+        visibility: visible;
+        animation: fadeIn 0.5s;
+      }
+    }
+  }
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+}
+
+#task-input {
+  font-family: 'FiraSans';
+}
+
+#task-input-popup {
+  font-family: MontserratMedium;
+  font-weight: normal;
+  font-size: 0.75rem;
+  color: white;
+}
