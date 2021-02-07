@@ -4,11 +4,17 @@ import './_TaskInput.scss';
 
 const TaskInput = ({ addTask }) => {
   const [taskInput, setTaskInput] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleAddTask = () => {
     //todo:  add only if not empty, show popup else
-    addTask(taskInput);
-    setTaskInput('');
+    if (taskInput) {
+      addTask(taskInput);
+      setTaskInput('');
+      setShowPopup(false);
+    } else {
+      setShowPopup(true);
+    }
   };
 
   return (
@@ -27,6 +33,13 @@ const TaskInput = ({ addTask }) => {
             setTaskInput(e.target.value);
           }}
         ></input>
+        <p
+          id='task-input-popup'
+          className={showPopup === true ? 'show' : ''}
+          onClick={() => setShowPopup(false)}
+        >
+          Task text can't be empty!
+        </p>
       </div>
       <Button
         className='button-card'

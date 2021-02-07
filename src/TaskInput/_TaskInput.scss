@@ -2,6 +2,15 @@
 @import '../styles/fonts';
 @import '../styles/css-reset';
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .input-area {
   margin: auto;
   padding-top: 30px;
