@@ -32,6 +32,11 @@ const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
             setTaskInput(e.target.value);
             setShowPopup(false);
           }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleAddTask();
+            }
+          }}
         ></input>
         <p
           id='task-input-popup'

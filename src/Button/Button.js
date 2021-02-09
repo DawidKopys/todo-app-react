@@ -4,6 +4,7 @@ import './_Button.scss';
 const Button = ({ className, id, title, text, onClick }) => {
   return (
     <button
+      type='button'
       className={className}
       id={id}
       title={title}
