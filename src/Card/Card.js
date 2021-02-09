@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './_Card.scss';
 import uuid from 'react-uuid';
 import TaskInput from './../TaskInput/TaskInput';
@@ -6,21 +6,17 @@ import TaskList from './../TaskList/TaskList';
 import Button from './../Button/Button';
 
 const Card = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: uuid(),
-      text: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAe',
-      isChecked: false,
-    },
-    { id: uuid(), text: 'task two', isChecked: false },
-    { id: uuid(), text: 'task one', isChecked: false },
-    { id: uuid(), text: 'task two', isChecked: false },
-    { id: uuid(), text: 'task one', isChecked: false },
-    { id: uuid(), text: 'task two', isChecked: false },
-    { id: uuid(), text: 'task one', isChecked: false },
-    { id: uuid(), text: 'task two', isChecked: false },
-  ]);
+  const [tasks, setTasks] = useState(getLocalStorage());
   const [showPopup, setShowPopup] = useState(false);
+
+  function getLocalStorage() {
+    let list = localStorage.getItem('tasks-list');
+    if (list) {
+      return JSON.parse(list);
+    } else {
+      return [];
+    }
+  }
 
   const addTask = (taskText) => {
     setTasks([...tasks, { id: uuid(), text: taskText, isChecked: false }]);
@@ -49,6 +45,10 @@ const Card = () => {
       })
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem('tasks-list', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div className='center-card'>
