@@ -14,12 +14,18 @@ function getLocalStorage() {
   }
 }
 
+function escapeHTML(html) {
+  const escape = document.createElement('textarea');
+  escape.textContent = html;
+  return escape.innerHTML;
+}
+
 const Card = () => {
   const [tasks, setTasks] = useState(getLocalStorage());
   const [showPopup, setShowPopup] = useState(false);
 
   const addTask = (taskText) => {
-    setTasks([...tasks, { id: uuid(), text: taskText, isChecked: false }]);
+    setTasks([...tasks, { id: uuid(), text: escapeHTML(taskText), isChecked: false }]);
   };
 
   const editTaskText = (taskId, newText) => {
