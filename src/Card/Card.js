@@ -5,22 +5,34 @@ import TaskInput from './../TaskInput/TaskInput';
 import TaskList from './../TaskList/TaskList';
 import Button from './../Button/Button';
 
+function getLocalStorage() {
+  let list = localStorage.getItem('tasks-list');
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return [];
+  }
+}
+
 const Card = () => {
   const [tasks, setTasks] = useState(getLocalStorage());
   const [showPopup, setShowPopup] = useState(false);
 
-  function getLocalStorage() {
-    let list = localStorage.getItem('tasks-list');
-    if (list) {
-      return JSON.parse(list);
-    } else {
-      return [];
-    }
-  }
-
   const addTask = (taskText) => {
     setTasks([...tasks, { id: uuid(), text: taskText, isChecked: false }]);
   };
+
+  const editTaskText = (taskId, newText) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, text: newText };
+        } else {
+          return task;
+        }
+      })
+    );
+  }
 
   const deleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
@@ -61,6 +73,7 @@ const Card = () => {
         tasks={tasks}
         deleteTask={deleteTask}
         toggleIsChecked={toggleIsChecked}
+        editTaskText={editTaskText}
       />
       <div className='footer'>
         <Button

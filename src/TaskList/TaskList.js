@@ -9,7 +9,7 @@ function isElementOverflown(element) {
   );
 }
 
-function TaskList({ tasks, deleteTask, toggleIsChecked }) {
+function TaskList({ tasks, deleteTask, toggleIsChecked, editTaskText }) {
   const [isOverflown, setIsOverflown] = useState(false);
   const taskListRef = useRef();
 
@@ -36,6 +36,7 @@ function TaskList({ tasks, deleteTask, toggleIsChecked }) {
               isChecked={isChecked}
               toggleIsChecked={toggleIsChecked}
               deleteTask={deleteTask}
+              editTaskText={editTaskText}
             >
               {text}
             </TaskItem>
