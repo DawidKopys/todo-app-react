@@ -15,9 +15,11 @@ function getLocalStorage() {
 }
 
 function escapeHTML(html) {
-  const escape = document.createElement('textarea');
-  escape.textContent = html;
-  return escape.innerHTML;
+  const text = html
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  return text;
 }
 
 const Card = () => {
@@ -25,7 +27,10 @@ const Card = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const addTask = (taskText) => {
-    setTasks([...tasks, { id: uuid(), text: escapeHTML(taskText), isChecked: false }]);
+    setTasks([
+      ...tasks,
+      { id: uuid(), text: escapeHTML(taskText), isChecked: false },
+    ]);
   };
 
   const editTaskText = (taskId, newText) => {
@@ -38,7 +43,7 @@ const Card = () => {
         }
       })
     );
-  }
+  };
 
   const deleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
