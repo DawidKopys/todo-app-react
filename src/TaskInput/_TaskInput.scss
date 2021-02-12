@@ -36,11 +36,10 @@
     }
   }
 
-  // Task input pop-up
   #task-input-container {
     position: relative;
 
-    // The actual pop-up
+    // The pop-up
     #task-input-popup {
       visibility: hidden;
       position: absolute;
@@ -68,21 +67,31 @@
         animation: fadeIn 0.5s;
       }
     }
-  }
-}
 
-.sr-only {
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
-  position: absolute;
+    label {
+      background-color: white;
+      padding: 0 0.2rem;
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      transition: all .1s ease-out;
+    
+      &.at-the-top {
+        top: -10px;
+        left: 9px;
+        color: black;
+      }
+    }
+  }
 }
 
 #task-input {
   font-family: 'FiraSans';
+}
+
+#task-input-label {
+  font-family: 'FiraSans';
+  color: hsl(0, 0%, 82%);
 }
 
 #task-input-popup {
