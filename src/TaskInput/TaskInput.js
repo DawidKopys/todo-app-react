@@ -20,13 +20,13 @@ const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
   return (
     <div className='input-area'>
       <div id='task-input-container'>
-        <label htmlFor='task-text' id='task-input-label' className={`${isInputFocused ? 'at-the-top' : ''}`}>
+        <label htmlFor='task-input' id='task-input-label' className={`${isInputFocused ? 'at-the-top' : ''}`}>
           New Task
         </label>
         <input
           type='text'
           id='task-input'
-          name='task-text'
+          name='task-input'
           value={taskInput}
           onChange={(e) => {
             setTaskInput(e.target.value);

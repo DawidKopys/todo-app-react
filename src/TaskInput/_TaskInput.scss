@@ -72,12 +72,13 @@
       background-color: white;
       padding: 0 0.2rem;
       position: absolute;
-      top: 10px;
+      top: 9px;
       left: 18px;
       transition: all .1s ease-out;
+      cursor: text;
     
       &.at-the-top {
-        top: -10px;
+        top: -11px;
         left: 9px;
         color: black;
       }
