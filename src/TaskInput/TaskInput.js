@@ -7,7 +7,6 @@ const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   const handleAddTask = () => {
-    //todo:  add only if not empty, show popup else
     if (taskInput) {
       addTask(taskInput);
       setTaskInput('');
@@ -20,7 +19,11 @@ const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
   return (
     <div className='input-area'>
       <div id='task-input-container'>
-        <label htmlFor='task-input' id='task-input-label' className={`${isInputFocused ? 'at-the-top' : ''}`}>
+        <label
+          htmlFor='task-input'
+          id='task-input-label'
+          className={`${isInputFocused ? 'at-the-top' : ''}`}
+        >
           New Task
         </label>
         <input
@@ -38,7 +41,11 @@ const TaskInput = ({ addTask, showPopup, setShowPopup }) => {
             }
           }}
           onFocus={() => setIsInputFocused(true)}
-          onBlur={() => setIsInputFocused(false)}
+          onBlur={() => {
+            if (taskInput === '') {
+              setIsInputFocused(false);
+            }
+          }}
         ></input>
         <p
           id='task-input-popup'
